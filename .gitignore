@@ -1,18 +1,13 @@
-.DS_Store
-node_modules/
 dist/
+node_modules/
 npm-debug.log
-yarn-error.log
+*.local
 
-build/.rpt2_cache
-tests/coverage
-/coverage
+# tests
+test-results/
+playwright-report/
 
-
-# Editor directories and files
+# editors
 .vscode
 .idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+.DS_Store

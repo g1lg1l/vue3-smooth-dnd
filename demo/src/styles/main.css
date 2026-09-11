@@ -1,0 +1,140 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tokens. Everything at rest is flat; depth is reserved for the item being carried. */
+:root {
+  --c-ground: #f3f2fa;
+  --c-surface: #ffffff;
+  --c-surface-2: #ebeaf5;
+  --c-line: #d9d8ea;
+  --c-ink: #1b1f4b;
+  --c-muted: #5f6390;
+  --c-accent: #5b4fe9;
+  --c-lift: #ff6b35;
+  --shadow-lift: 0 24px 48px -16px rgb(27 31 75 / 0.45), 0 4px 12px -4px rgb(27 31 75 / 0.25);
+  color-scheme: light;
+}
+.dark {
+  --c-ground: #14162b;
+  --c-surface: #1d2040;
+  --c-surface-2: #242856;
+  --c-line: #2f3368;
+  --c-ink: #e8e7f5;
+  --c-muted: #9a9dc4;
+  --c-accent: #a89df7;
+  --c-lift: #ff7d4d;
+  --shadow-lift: 0 24px 48px -16px rgb(0 0 0 / 0.7), 0 4px 12px -4px rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-ground: var(--c-ground);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-line: var(--c-line);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-accent: var(--c-accent);
+  --color-lift: var(--c-lift);
+  --font-sans: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --radius-card: 10px;
+  --radius-control: 6px;
+}
+
+@layer base {
+  body {
+    @apply bg-ground font-sans text-ink antialiased;
+    font-optical-sizing: auto;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--c-accent) 25%, transparent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .link {
+    @apply text-accent underline-offset-4 hover:underline;
+  }
+  .nav-link {
+    @apply block rounded-control px-2.5 py-1.5 text-sm whitespace-nowrap text-muted hover:bg-surface-2 hover:text-ink;
+  }
+  .nav-link-active {
+    @apply bg-surface-2 font-medium text-ink;
+  }
+  .dnd-list {
+    @apply rounded-card border border-line bg-surface-2 p-2;
+  }
+  .dnd-item {
+    @apply my-1 flex cursor-grab items-center gap-3 rounded-control border border-line bg-surface px-3 py-2.5 text-sm select-none active:cursor-grabbing;
+  }
+  .dnd-item-hover:hover,
+  .dnd-card-hover:hover {
+    @apply border-accent;
+  }
+  .dnd-placeholder {
+    @apply rounded-control border-2 border-dashed border-accent/60 bg-accent/10;
+  }
+  .control {
+    @apply h-8 rounded-control border border-line bg-surface px-2.5 text-sm text-ink tabular-nums outline-none focus:border-accent focus:ring-2 focus:ring-accent/25;
+  }
+  .ref-table {
+    @apply w-full min-w-[40rem] border-collapse text-left text-sm;
+    th {
+      @apply border-b border-line pb-2 pr-6 font-medium text-muted;
+    }
+    td {
+      @apply border-b border-line py-3 pr-6 align-top text-pretty;
+    }
+    /* the description takes whatever the other columns leave */
+    td:last-child {
+      @apply w-full min-w-[18rem];
+    }
+    code {
+      @apply font-mono text-[13px] whitespace-nowrap text-ink;
+    }
+    td:nth-child(2) code {
+      @apply whitespace-normal;
+    }
+  }
+}
+
+/* smooth-dnd injects unlayered rules (`display: table` on horizontal containers, `min-height: 30px` on every
+   container). Unlayered CSS beats layered utilities whatever the specificity, so these overrides stay unlayered. */
+.smooth-dnd-container.horizontal.flex {
+  display: flex;
+}
+.dnd-list {
+  min-height: 8rem;
+}
+
+/* The one place with depth: the element being carried (`drag-class`) and its landing (`drop-class`). */
+.lifted {
+  rotate: 1.5deg;
+  box-shadow: var(--shadow-lift);
+  outline: 2px solid var(--c-lift);
+  outline-offset: -2px;
+  transition:
+    rotate 150ms ease,
+    box-shadow 150ms ease;
+}
+.dropping {
+  rotate: 0deg;
+  scale: 0.98;
+  box-shadow: none;
+  outline-color: transparent;
+  transition: all 150ms ease;
+}

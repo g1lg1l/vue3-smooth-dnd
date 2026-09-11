@@ -1,0 +1,7 @@
+dist
+node_modules
+package-lock.json
+playwright-report
+test-results
+# vendored: keep the upstream formatting so diffs against smooth-dnd stay readable
+src/smooth-dnd

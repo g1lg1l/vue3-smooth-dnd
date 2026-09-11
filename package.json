@@ -1,13 +1,76 @@
 {
-  "name": "monorepo",
-  "private": true,
+  "name": "vue3-smooth-dnd",
+  "version": "1.0.0",
+  "description": "Drag & drop / sortable components for Vue 3. Bundles a maintained fork of smooth-dnd, ships TypeScript types.",
+  "author": "Gilbert Ndresaj",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g1lg1l/vue3-smooth-dnd.git"
+  },
+  "homepage": "https://g1lg1l.github.io/vue3-smooth-dnd",
+  "bugs": "https://github.com/g1lg1l/vue3-smooth-dnd/issues",
+  "keywords": [
+    "vue",
+    "vue3",
+    "sortable",
+    "drag and drop",
+    "drag&drop",
+    "draggable",
+    "dnd",
+    "kanban",
+    "smooth-dnd"
+  ],
+  "main": "./dist/vue3-smooth-dnd.cjs",
+  "module": "./dist/vue3-smooth-dnd.js",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/vue3-smooth-dnd.umd.cjs",
+  "jsdelivr": "./dist/vue3-smooth-dnd.umd.cjs",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/vue3-smooth-dnd.js",
+      "require": "./dist/vue3-smooth-dnd.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20.19"
+  },
   "workspaces": [
-    "packages/*"
+    "demo"
   ],
   "scripts": {
-    "dev": "yarn workspace example dev",
-    "deploy": "yarn workspace example deploy",
-    "lib:watch": "yarn workspace vue3-smooth-dnd run build:watch",
-    "lib": "yarn workspace vue3-smooth-dnd run build"
+    "dev": "npm run dev -w demo",
+    "build": "vite build && tsc -p tsconfig.json --emitDeclarationOnly",
+    "build:demo": "npm run build -w demo",
+    "preview": "npm run preview -w demo",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "playwright test",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "@playwright/test": "^1.63.0",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.0",
+    "eslint-plugin-vue": "^10.11.0",
+    "globals": "^17.0.0",
+    "prettier": "^3.9.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.70.0",
+    "vite": "^8.0.0",
+    "vue": "^3.5.0"
   }
 }
