@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.1 — 2026-10-27
+
+### Security
+
+- Dev dependencies updated, including vite 8.3.5 for the launch-editor advisories in the dev server (Windows `existsSync` bypass, missing `%` escaping, editor CLI flag injection). They only affect working on this repository: the published package doesn't include vite, and the library source is unchanged from 1.0.0.
+
+### Repository
+
+- npm releases are published from GitHub Actions through npm trusted publishing (OIDC) instead of an `NPM_TOKEN` secret.
+
 ## 1.0.0 — 2026-09-11
 
 ### Fixed
