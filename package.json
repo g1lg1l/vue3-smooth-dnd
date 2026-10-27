@@ -1,6 +1,6 @@
 {
   "name": "vue3-smooth-dnd",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Drag & drop / sortable components for Vue 3. Bundles a maintained fork of smooth-dnd, ships TypeScript types.",
   "author": "Gilbert Ndresaj",
   "license": "MIT",

@@ -179,13 +179,13 @@ npm run build:demo   # → demo/dist
 First-time setup:
 
 - Repository settings → Pages → Source: **GitHub Actions**. From then on every push to `main` runs the `Deploy demo` workflow and publishes `demo/dist` to https://g1lg1l.github.io/vue3-smooth-dnd/.
-- On npmjs.com create an automation token (Access Tokens → Generate new token → Automation, or a granular token with publish rights for `vue3-smooth-dnd`) and store it in the repository as the `NPM_TOKEN` secret (Settings → Secrets and variables → Actions).
+- On npmjs.com, package Settings → Trusted Publisher → GitHub Actions: user `g1lg1l`, repository `vue3-smooth-dnd`, workflow `release.yml`, allowed action `npm publish`. No token or secret is needed. A new trusted publisher expires unless it publishes within 2 days.
 
 Every release:
 
 1. `npm version <patch|minor|major>` bumps `package.json`, commits and tags (for example `v1.0.1`).
 2. Describe the changes in `CHANGELOG.md`, commit, then `git push --follow-tags`.
-3. On GitHub, draft a release for that tag and publish it. The `Release` workflow runs the type check and `npm publish --provenance`.
+3. On GitHub, draft a release for that tag and publish it. The `Release` workflow runs the type check and `npm publish`, with provenance.
 
 Without the workflow: `npm login` once, then `npm publish` from the repository root. `prepublishOnly` builds first.
 
