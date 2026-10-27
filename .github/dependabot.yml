@@ -7,6 +7,10 @@ updates:
     groups:
       dependencies:
         patterns: ['*']
+    # typescript-eslint peers on typescript <6.1; drop once it supports TS 7
+    ignore:
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
   - package-ecosystem: github-actions
     directory: /
     schedule:
