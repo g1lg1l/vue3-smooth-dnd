@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.2 — 2026-11-16
+
+### Fixed
+
+- **Types resolved to `any` under `moduleResolution: node16` / `nodenext`** (#31). The published `.d.ts` files used extensionless relative imports, which those modes can't follow. Imports now carry explicit `.js` extensions, and CommonJS consumers get a `.d.cts` mirror through the `require` export condition, so they no longer hit TS1479. Runtime code is unchanged.
+
+### Repository
+
+- Releases are cut by pushing a `v*` tag: the `Release` workflow checks it matches `package.json`, publishes to npm and creates the GitHub release.
+
 ## 1.0.1 — 2026-10-27
 
 ### Security
