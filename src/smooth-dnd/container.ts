@@ -1,11 +1,11 @@
-import { animationClass, containerClass, containerInstance, dropPlaceholderFlexContainerClass, dropPlaceholderInnerClass, dropPlaceholderWrapperClass, stretcherElementClass, stretcherElementInstance, translationValue, wrapperClass, dropPlaceholderDefaultClass } from './constants';
-import { defaultOptions } from './defaults';
-import { domDropHandler } from './dropHandlers';
-import { ContainerOptions, SmoothDnD, SmoothDnDCreator, DropPlaceholderOptions } from './exportTypes';
-import { ContainerProps, DraggableInfo, DragInfo, DragResult, ElementX, IContainer, LayoutManager } from './interfaces';
-import layoutManager from './layoutManager';
-import Mediator from './mediator';
-import { addClass, getParent, getParentRelevantContainerElement, hasClass, listenScrollParent, removeClass, stripUndefined } from './utils';
+import { animationClass, containerClass, containerInstance, dropPlaceholderFlexContainerClass, dropPlaceholderInnerClass, dropPlaceholderWrapperClass, stretcherElementClass, stretcherElementInstance, translationValue, wrapperClass, dropPlaceholderDefaultClass } from './constants.js';
+import { defaultOptions } from './defaults.js';
+import { domDropHandler } from './dropHandlers.js';
+import { ContainerOptions, SmoothDnD, SmoothDnDCreator, DropPlaceholderOptions } from './exportTypes.js';
+import { ContainerProps, DraggableInfo, DragInfo, DragResult, ElementX, IContainer, LayoutManager } from './interfaces.js';
+import layoutManager from './layoutManager.js';
+import Mediator from './mediator.js';
+import { addClass, getParent, getParentRelevantContainerElement, hasClass, listenScrollParent, removeClass, stripUndefined } from './utils.js';
 
 function setAnimation(element: HTMLElement, add: boolean, animationDuration = defaultOptions.animationDuration) {
   if (add) {

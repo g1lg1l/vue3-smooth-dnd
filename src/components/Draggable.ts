@@ -1,6 +1,6 @@
 import { defineComponent, h } from 'vue'
-import { constants } from '../smooth-dnd'
-import { resolveTag, tagProp } from '../utils'
+import { constants } from '../smooth-dnd/index.js'
+import { resolveTag, tagProp } from '../utils.js'
 
 export default defineComponent({
   name: 'Draggable',

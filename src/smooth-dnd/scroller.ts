@@ -1,6 +1,6 @@
-import { DraggableInfo, IContainer, Axis, Rect, ScrollAxis, Position } from "./interfaces";
-import { getScrollingAxis, getVisibleRect, getWindowScrollingAxis, hasClass } from "./utils";
-import { preventAutoScrollClass } from "./constants";
+import { DraggableInfo, IContainer, Axis, Rect, ScrollAxis, Position } from "./interfaces.js";
+import { getScrollingAxis, getVisibleRect, getWindowScrollingAxis, hasClass } from "./utils.js";
+import { preventAutoScrollClass } from "./constants.js";
 
 type Direction = 'begin' | 'end';
 type ScrollTarget = HTMLElement | Window;

@@ -29,9 +29,14 @@
   "jsdelivr": "./dist/vue3-smooth-dnd.umd.cjs",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/vue3-smooth-dnd.js",
-      "require": "./dist/vue3-smooth-dnd.cjs"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/vue3-smooth-dnd.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/vue3-smooth-dnd.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
@@ -47,7 +52,7 @@
   ],
   "scripts": {
     "dev": "npm run dev -w demo",
-    "build": "vite build && tsc -p tsconfig.json --emitDeclarationOnly",
+    "build": "vite build && tsc -p tsconfig.json --emitDeclarationOnly && node scripts/emit-cts-types.js",
     "build:demo": "npm run build -w demo",
     "preview": "npm run preview -w demo",
     "typecheck": "tsc -p tsconfig.json --noEmit",

@@ -1,5 +1,5 @@
-import { containerClass, disbaleTouchActions, draggingClass, dropPlaceholderFlexContainerClass, dropPlaceholderInnerClass, dropPlaceholderWrapperClass, ghostClass, noUserSelectClass, stretcherElementClass, wrapperClass, dropPlaceholderDefaultClass } from './constants';
-import { Dictionary } from './interfaces';
+import { containerClass, disbaleTouchActions, draggingClass, dropPlaceholderFlexContainerClass, dropPlaceholderInnerClass, dropPlaceholderWrapperClass, ghostClass, noUserSelectClass, stretcherElementClass, wrapperClass, dropPlaceholderDefaultClass } from './constants.js';
+import { Dictionary } from './interfaces.js';
 
 const verticalWrapperClass = {
 	'overflow': 'hidden',
