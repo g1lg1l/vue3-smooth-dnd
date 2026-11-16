@@ -183,9 +183,9 @@ First-time setup:
 
 Every release:
 
-1. `npm version <patch|minor|major>` bumps `package.json`, commits and tags (for example `v1.0.1`).
-2. Describe the changes in `CHANGELOG.md`, commit, then `git push --follow-tags`.
-3. On GitHub, draft a release for that tag and publish it. The `Release` workflow runs the type check and `npm publish`, with provenance.
+1. On `main`, describe the changes in `CHANGELOG.md` and commit.
+2. `npm version <patch|minor|major>` bumps `package.json`, commits and tags (for example `v1.0.2`), then `git push --follow-tags`.
+3. The `Release` workflow checks the tag matches `package.json`, runs the type check and `npm publish` (with provenance), then creates the GitHub release with generated notes.
 
 Without the workflow: `npm login` once, then `npm publish` from the repository root. `prepublishOnly` builds first.
 

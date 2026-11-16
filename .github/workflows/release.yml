@@ -1,25 +1,47 @@
-# Publishes to npm when a GitHub release is published, through npm trusted publishing (OIDC, set up in the
-# package settings on npmjs.com): no token, provenance is added automatically.
+# Publishes a release when a tag v* is pushed: type check, npm publish through npm trusted publishing
+# (OIDC, set up in the package settings on npmjs.com, bound to this file name: no token, provenance is
+# added automatically), then a GitHub release with notes generated from the commits since the last one.
+# The tag must match the version in package.json. By hand: gh workflow run Release -f tag=vX.Y.Z
 name: Release
 
 on:
-  release:
-    types: [published]
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to publish (it must exist)
+        required: true
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
+
+env:
+  TAG: ${{ inputs.tag || github.ref_name }}
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
       - uses: actions/setup-node@v4
         with:
           # trusted publishing needs npm >= 11.5.1 (Node 24 ships it); no cache in release builds
           node-version: 24
           registry-url: https://registry.npmjs.org
+      - name: Tag matches package.json
+        run: |
+          version="v$(node -p "require('./package.json').version")"
+          [ "$TAG" = "$version" ] || { echo "::error::tag $TAG does not match package.json $version"; exit 1; }
       - run: npm ci
       - run: npm run typecheck
       - run: npm publish --access public
+      # a release drafted or published by hand for this tag is kept, with its notes
+      - name: GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release view "$TAG" > /dev/null 2>&1 || gh release create "$TAG" --verify-tag --generate-notes --title "Release $TAG"
