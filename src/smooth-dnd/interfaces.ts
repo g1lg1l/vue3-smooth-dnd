@@ -1,4 +1,4 @@
-import { ContainerOptions } from './exportTypes';
+import { ContainerOptions } from './exportTypes.js';
 
 export type Position = { x: number; y: number };
 export type MousePosition = { clientX: number; clientY: number };

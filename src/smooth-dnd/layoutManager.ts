@@ -1,6 +1,6 @@
-import { extraSizeForInsertion, translationValue, visibilityValue } from './constants';
-import { Dictionary, ElementX, OffsetSize, Orientation, Position, Rect, LayoutManager } from './interfaces';
-import * as Utils from './utils';
+import { extraSizeForInsertion, translationValue, visibilityValue } from './constants.js';
+import { Dictionary, ElementX, OffsetSize, Orientation, Position, Rect, LayoutManager } from './interfaces.js';
+import * as Utils from './utils.js';
 
 export interface PropMap {
 	[key: string]: any;

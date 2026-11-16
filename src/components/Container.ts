@@ -1,6 +1,6 @@
 import { defineComponent, h, onBeforeUnmount, onMounted, ref, watch, type PropType } from 'vue'
-import { constants, dropHandlers, smoothDnD } from '../smooth-dnd'
-import { defaultOptions } from '../smooth-dnd/defaults'
+import { constants, dropHandlers, smoothDnD } from '../smooth-dnd/index.js'
+import { defaultOptions } from '../smooth-dnd/defaults.js'
 import type {
   ContainerOptions,
   DragEndParams,
@@ -8,8 +8,8 @@ import type {
   DropPlaceholderOptions,
   DropResult,
   SmoothDnD,
-} from '../smooth-dnd'
-import { resolveTag, tagProp } from '../utils'
+} from '../smooth-dnd/index.js'
+import { resolveTag, tagProp } from '../utils.js'
 
 // Vue owns the DOM: smooth-dnd must only report drops, never move nodes or wrap children itself.
 smoothDnD.dropHandler = dropHandlers.reactDropHandler().handler

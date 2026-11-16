@@ -4,9 +4,9 @@
  *
  * Upstream is unmaintained; fixes applied here are marked with `// vue3-smooth-dnd:` comments.
  */
-import * as constants from './constants';
-import container from './container';
-import * as dropHandlers from './dropHandlers';
+import * as constants from './constants.js';
+import container from './container.js';
+import * as dropHandlers from './dropHandlers.js';
 
-export * from './exportTypes';
+export * from './exportTypes.js';
 export { container as smoothDnD, constants, dropHandlers };

@@ -1,10 +1,10 @@
-import * as constants from './constants';
-import { defaultOptions } from './defaults';
-import dragScroller from './scroller';
-import { Axis, DraggableInfo, ElementX, GhostInfo, IContainer, MousePosition, Position, TopLeft, Orientation } from './interfaces';
-import { addCursorStyleToBody, addStyleToHead, removeStyle } from './styles';
-import * as Utils from './utils';
-import { ContainerOptions } from './exportTypes';
+import * as constants from './constants.js';
+import { defaultOptions } from './defaults.js';
+import dragScroller from './scroller.js';
+import { Axis, DraggableInfo, ElementX, GhostInfo, IContainer, MousePosition, Position, TopLeft, Orientation } from './interfaces.js';
+import { addCursorStyleToBody, addStyleToHead, removeStyle } from './styles.js';
+import * as Utils from './utils.js';
+import { ContainerOptions } from './exportTypes.js';
 
 const grabEvents = ['mousedown', 'touchstart'];
 const moveEvents = ['mousemove', 'touchmove'];

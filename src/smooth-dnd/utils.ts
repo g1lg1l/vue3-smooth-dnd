@@ -1,5 +1,5 @@
-import { Rect, Axis, ElementX, ScrollAxis, IContainer } from './interfaces';
-import { containerInstance } from './constants';
+import { Rect, Axis, ElementX, ScrollAxis, IContainer } from './interfaces.js';
+import { containerInstance } from './constants.js';
 
 export const getIntersection = (rect1: Rect, rect2: Rect) => {
   return {

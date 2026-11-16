@@ -1,4 +1,4 @@
-export { default as Container } from './components/Container'
-export { default as Draggable } from './components/Draggable'
-export type { Tag, TagObject } from './utils'
-export * from './smooth-dnd'
+export { default as Container } from './components/Container.js'
+export { default as Draggable } from './components/Draggable.js'
+export type { Tag, TagObject } from './utils.js'
+export * from './smooth-dnd/index.js'
